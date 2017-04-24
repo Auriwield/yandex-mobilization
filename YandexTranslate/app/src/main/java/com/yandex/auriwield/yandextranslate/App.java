@@ -8,11 +8,11 @@ import com.squareup.leakcanary.LeakCanary;
 
 import java.util.Locale;
 
-import dagger.Module;
+
 import timber.log.Timber;
 
 /**
- * Created by auriw on 23.03.2017.
+ * @author g.zaripov
  */
 
 public class App extends Application {
