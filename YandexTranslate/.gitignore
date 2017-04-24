@@ -1,0 +1,16 @@
+*.iml
+.gradle
+/local.properties
+libs/
+proguard-rules.pro
+.idea
+### Android template
+gradle.properties
+gradlew
+gradlew.bat
+bin/
+gen/
+out/
+
+# Gradle files
+build/

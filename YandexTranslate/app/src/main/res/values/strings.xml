@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Yandex Translate</string>
+    <string name="title_translate">Home</string>
+    <string name="title_favorite">Dashboard</string>
+    <string name="title_settings">Notifications</string>
+    <string name="settings">Settings</string>
+    <string name="translate_hint">Type text or a site address</string>
+    <string name="source_title">Source language</string>
+    <string name="target_title">Target language</string>
+    <string name="history">History</string>
+    <string name="favorites">Favorites</string>
+    <string name="receive_direction_error">Download direction error</string>
+    <string name="favorites_receive_data_error">error receive data</string>
+    <string name="delete_from_favorite_error">Error deleting from favorites</string>
+    <string name="clear_history_error">clear_history_error</string>
+    <string name="favorites_clear_error">error when clear favorites</string>
+    <string name="no_translations_in_history">No translations in\nHistory</string>
+    <string name="no_translations_in_favorites">No translations in\nFavorites</string>
+    <string name="history_search_view_hint">Search in History</string>
+    <string name="favorites_search_view_hint">Search in Favorites</string>
+</resources>

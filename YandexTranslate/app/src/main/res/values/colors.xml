@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFDC61</color>
+    <color name="colorPrimaryDark">#E1C255</color>
+    <color name="colorAccent">#FFCC00</color>
+    <color name="icon_color_selected">#000000</color>
+    <color name="icon_color_unselected"> #8A000000</color>
+    <color name="edit_text_unselected">#21000000</color>
+    <color name="text_primary">#DE000000</color>
+    <color name="text_secondary">#8A000000</color>
+    <color name="black">#000</color>
+    <color name="translate_text_primary">#4b7893</color>
+    <color name="image_secondary">#858e98</color>
+    <color name="light_grey">#e5e5e5</color>
+    <color name="divider_color">#25000000</color>
+    <color name="item_selected_color">#f6f5f3</color>
+    <color name="speech_part">#a37d92</color>
+    <color name="translate_text_secondary">#9a9a9a</color>
+    <color name="mean_text">#8d634d</color>
+    <color name="example_text_color">#7987a2</color>
+</resources>

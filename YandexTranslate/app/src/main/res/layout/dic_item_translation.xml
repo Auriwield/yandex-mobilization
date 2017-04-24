@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/inset_4dp"
+        android:textColor="@color/translate_text_secondary"
+        android:textSize="@dimen/dic_entry_number_size" />
+
+    <org.apmem.tools.layouts.FlowLayout
+        android:id="@+id/flow_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/inset_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    </org.apmem.tools.layouts.FlowLayout>
+</RelativeLayout>
