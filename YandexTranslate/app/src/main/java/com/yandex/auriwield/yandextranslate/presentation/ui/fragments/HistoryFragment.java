@@ -112,6 +112,9 @@ public class HistoryFragment extends BaseFragment implements IHistoryPresenter.V
         if (isVisibleToUser) {
             if (presenter != null)
                 presenter.getAllTranslations();
+            if (ivDelete != null)
+                ivDelete.setVisibility(mAdapter.getTranslationList().isEmpty()
+                        ? View.GONE : View.VISIBLE);
         }
     }
 

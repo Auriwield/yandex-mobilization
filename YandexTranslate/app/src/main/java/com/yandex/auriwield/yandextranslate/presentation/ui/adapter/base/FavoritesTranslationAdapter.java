@@ -43,6 +43,7 @@ public abstract class FavoritesTranslationAdapter
 
     public void clear() {
         translationList.clear();
+        filteredList.clear();
         notifyDataSetChanged();
     }
 

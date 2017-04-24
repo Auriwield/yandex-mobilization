@@ -1,6 +1,7 @@
 package com.yandex.auriwield.yandextranslate.domain.interactors.impl;
 
 import com.yandex.auriwield.yandextranslate.domain.interactors.ITranslateInteractor;
+import com.yandex.auriwield.yandextranslate.domain.model.dictionary.DictionaryEntry;
 import com.yandex.auriwield.yandextranslate.domain.model.translate.Direction;
 import com.yandex.auriwield.yandextranslate.domain.model.translate.Language;
 import com.yandex.auriwield.yandextranslate.domain.model.translate.Translation;
@@ -21,6 +22,9 @@ public class TranslateInteractorTest extends BaseInteractorTest {
     @Mock
     private ITranslateInteractor.Callback mCallback;
 
+    @Mock
+    private DictionaryEntry entry;
+
     private String word;
 
     @Before
@@ -39,17 +43,14 @@ public class TranslateInteractorTest extends BaseInteractorTest {
 
         Translation dummyTranslation = new Translation(word, "Время", dummyDirection, false);
 
-
-        when(mTranslationRepository.getLastDirection()).thenReturn(dummyDirection);
         when(mTranslationRepository.getTranslation(word, dummyDirection)).thenReturn(dummyTranslation);
         when(mTranslationRepository.getMeaning(word, dummyDirection)).thenReturn(null);
 
         TranslateInteractor interactor = new TranslateInteractor(mExecutor, mMainThread,
-                word, direction, mTranslationRepository, mCallback);
+                word, dummyDirection, mTranslationRepository, mCallback);
 
         interactor.run();
 
-        Mockito.verify(mTranslationRepository).getLastDirection();
         Mockito.verify(mTranslationRepository).getTranslation(word, dummyDirection);
         Mockito.verify(mTranslationRepository).getMeaning(word, dummyDirection);
         Mockito.verify(mCallback).onTranslated(dummyTranslation);
@@ -60,16 +61,14 @@ public class TranslateInteractorTest extends BaseInteractorTest {
         Mockito.reset(mTranslationRepository, mCallback);
 
 
-        when(mTranslationRepository.getLastDirection()).thenReturn(dummyDirection);
         when(mTranslationRepository.getTranslation(word, dummyDirection)).thenReturn(null);
         when(mTranslationRepository.getMeaning(word, dummyDirection)).thenReturn(null);
 
         interactor.run();
 
-        Mockito.verify(mTranslationRepository).getLastDirection();
         Mockito.verify(mTranslationRepository).getTranslation(word, dummyDirection);
-        Mockito.verify(mTranslationRepository).getMeaning(word, dummyDirection);
-        Mockito.verify(mCallback, never()).onTranslated(dummyTranslation);
+        Mockito.verify(mTranslationRepository, never()).getMeaning(word, dummyDirection);
+        Mockito.verify(mCallback, never()).onTranslated(entry);
         Mockito.verify(mCallback).downloadTranslationError();
         Mockito.verifyNoMoreInteractions(mTranslationRepository);
     }

@@ -20,6 +20,7 @@ import com.yandex.auriwield.yandextranslate.storage.model.translate.TranslationM
 import com.yandex.auriwield.yandextranslate.storage.model.translate.TranslationModel_Table;
 
 import java.util.List;
+import java.util.Locale;
 
 public class DiskStore implements Store {
 
@@ -109,7 +110,8 @@ public class DiskStore implements Store {
     }
 
     public List<TranslationModel> getFavoriteTranslations() {
-        return SQLite.select().from(TranslationModel.class).where(TranslationModel_Table.isFavorite.eq(true)).queryList();
+        return SQLite.select().from(TranslationModel.class)
+                .where(TranslationModel_Table.isFavorite.eq(true)).queryList();
     }
 
     public TranslationModel removeFromFavorites(TranslationModel t) {
@@ -120,17 +122,15 @@ public class DiskStore implements Store {
 
     public void clearHistory() {
         String tableName = FlowManager.getTableName(TranslationModel.class);
-        ContentValues cv = new ContentValues();
-        cv.put(HISTORY_COLUMN_NAME, false);
-        FlowManager.getWritableDatabaseForTable(TranslationModel.class)
-                .updateWithOnConflict(tableName, cv, HISTORY_COLUMN_NAME + " = true", null, SQLiteDatabase.CONFLICT_IGNORE);
+        FlowManager.getWritableDatabaseForTable(TranslationModel.class).execSQL(
+                String.format(Locale.ENGLISH, "Update %s set isArchived = '%d' " +
+                        "where isArchived = '%d'",tableName, 0,1 ));
     }
 
     public void clearFavorites() {
         String tableName = FlowManager.getTableName(TranslationModel.class);
-        ContentValues cv = new ContentValues();
-        cv.put(FAVORITES_COLUMN_NAME, false);
-        FlowManager.getWritableDatabaseForTable(TranslationModel.class)
-                .updateWithOnConflict(tableName, cv, FAVORITES_COLUMN_NAME + " = true", null, SQLiteDatabase.CONFLICT_IGNORE);
+        FlowManager.getWritableDatabaseForTable(TranslationModel.class).execSQL(
+                String.format(Locale.ENGLISH, "Update %s set isFavorite = '%d' " +
+                        "where isFavorite = '%d'",tableName, 0,1 ));
     }
 }

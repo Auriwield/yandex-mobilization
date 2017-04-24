@@ -79,6 +79,7 @@ public class TranslateFragment extends BaseFragment implements ITranslatePresent
     private DictionaryAdapter adapter;
 
     private boolean lastUserVisible = false;
+    private boolean firstTime = true;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -250,6 +251,10 @@ public class TranslateFragment extends BaseFragment implements ITranslatePresent
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    if (firstTime) {
+                        firstTime = false;
+                        return;
+                    }
                     if (editText != null)
                         editText.requestFocus();
                 }

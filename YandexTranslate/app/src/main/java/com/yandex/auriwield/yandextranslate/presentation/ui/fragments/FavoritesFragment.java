@@ -56,7 +56,8 @@ public class FavoritesFragment extends BaseFragment implements IFavoritesPresent
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.favorites_fragment, container, false);
     }
 
@@ -83,7 +84,8 @@ public class FavoritesFragment extends BaseFragment implements IFavoritesPresent
         mAdapter.setListener(presenter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        DividerItemDecoration decor = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration decor = new DividerItemDecoration(getContext(),
+                DividerItemDecoration.VERTICAL);
         decor.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
         recyclerView.addItemDecoration(decor);
         recyclerView.setAdapter(mAdapter);
@@ -113,6 +115,9 @@ public class FavoritesFragment extends BaseFragment implements IFavoritesPresent
         if (isVisibleToUser) {
             if (presenter != null)
                 presenter.getFavoriteTranslations();
+            if (ivDelete != null)
+                ivDelete.setVisibility(mAdapter.getTranslationList().isEmpty()
+                        ? View.GONE : View.VISIBLE);
         }
     }
 
